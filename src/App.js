@@ -30,17 +30,17 @@ function App() {
                     <NavHomeComponent />
                     <SectionComponent
                       section={"Rock Classics"}
-                      propId={"rockSection"}
+                      propId={"rock"}
                       artistFetch={"queen"}
                     />
                     <SectionComponent
                       section={"Pop Culture"}
-                      propId={"popSection"}
+                      propId={"pop"}
                       artistFetch={"katyperry"}
                     />
                     <SectionComponent
                       section={"#HipHop"}
-                      propId={"hipHopSection"}
+                      propId={"hiphop"}
                       artistFetch={"eminem"}
                     />
                   </>

@@ -176,7 +176,7 @@ const SideBarComponent = () => {
             Sign Up
             {/* </button> */}
           </Button>
-          <Button className="login-btn" type="button">
+          <Button className="login-btn">
             Login
           </Button>
           {/* <button class="btn login-btn" type="button"> */}
