@@ -121,7 +121,7 @@ const SideBarComponent = () => {
                     
                     className="input-group mt-3"
                   >
-                    <Form.Group className="mb-3">
+                    {/* <Form.Group className="mb-3"> */}
                       <Form.Control
                         type="text"
                         placeholder="Search"
@@ -138,7 +138,7 @@ const SideBarComponent = () => {
                         }
                         value={searchArtist.text}
                       />
-                    </Form.Group>
+                    {/* </Form.Group> */}
                     {/* originale */}
                     {/* <input
                       type="text"

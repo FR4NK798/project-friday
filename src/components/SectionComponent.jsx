@@ -29,7 +29,7 @@ const SectionComponent = (props) => {
       <Col xs={10}>
         {/* <div class="col-10"> */}
         {/* prop id */}
-        <div id="rock">
+        <div id={props.propId}>
           {/* prop h2 */}
           <h2>{props.section}</h2>
           <Row
