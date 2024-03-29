@@ -31,9 +31,12 @@ const SideBarComponent = () => {
       > */}
         <Container className="flex-column align-items-start">
           {/* <div class="container flex-column align-items-start"> */}
-          <a className="navbar-brand" href="index.html">
+          <Link to={"/"}>
+          <div className="navbar-brand">
+          {/* <a className="navbar-brand" href="index.html"> */}
             <img src={logo} alt="Spotify Logo" width="131" height="40" />
-          </a>
+          </div>
+          </Link>
 
           <Button
             className="navbar-toggler"

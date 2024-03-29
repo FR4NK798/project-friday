@@ -2,51 +2,33 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getSongSearchAction } from "../redux/actions";
 
 const SearchResultComponent = (props) => {
+  const dispatch = useDispatch();
+
   const [musicSearch, setMusicSearch] = useState([]);
   const [artistParams, setArtistParams] = useState("");
 
   const params = useParams();
   console.log("PARAMS", params);
-  //   const navigate = useNavigate();
 
-  const searchArtistSongs = (e) => {
-    // e.preventDefault();
-
-    const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
-    const artist = params.arist;
-    const completeUrl = url + artist;
-    fetch(completeUrl, {
-      method: "GET",
-
-      headers: {
-        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        "X-RapidAPI-Key": "9d408f0366mshab3b0fd8e5ecdf7p1b09f2jsne682a1797fa0",
-      },
-    })
-      .then((res) => {
-        console.log("RES", res);
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("Errore nel salvataggio della prenotazione");
-        }
-      })
-      .then((objFetch) => {
-        setMusicSearch(objFetch.data);
-        console.log("obj fetch", objFetch);
-      })
-      .catch((err) => {
-        // finirete qui dentro se la Promise viene rifiutata!
-        console.log("ERRORE!", err);
-      });
-  };
+  
   useEffect(() => {
-    searchArtistSongs();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    
+    console.log('use effect dirige l orchestra, il maestro use effect vessicchio')
+    
+    console.log("i grandi PARAMS", params.artist);
+    // let artist = params.artist
+    dispatch(getSongSearchAction(params));
+    
+    
+    // console.log("dispatch result", dispatch(getSongSearchAction(params.artist)));
+  },[params]);
   console.log("parames dentro search component", params);
+  const songsSearch = useSelector((state) => state.search.musicSearch);
+  console.log("use selector result DAJEEEE", songsSearch);
   return (
     <Row>
       {/* <div class="row"> */}
@@ -58,7 +40,7 @@ const SearchResultComponent = (props) => {
           <h2>Search Results</h2>
           <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
             {/* dove fare map stato */}
-            {musicSearch.map((songInfo) => {
+            {songsSearch.map((songInfo) => {
               return (
                 <div
                   className="col text-center"
@@ -76,7 +58,7 @@ const SearchResultComponent = (props) => {
                       ? songInfo.title
                       : songInfo.title.substring(0, 16)}
                   </p>
-                  {/* <br> */}
+
                   <p>Artist: {songInfo.artist.name}</p>
                 </div>
               );
