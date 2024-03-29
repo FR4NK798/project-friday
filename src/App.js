@@ -12,50 +12,48 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Container fluid>
-          <Row>
-            <SideBarComponent />
+    <BrowserRouter>
+      <Container fluid>
+        <Row>
+          <SideBarComponent />
 
-            <Col xs={12} md={9} className="offset-md-3 mainPage">
-              <Routes>
-                <Route
-                  path="/search/:artist"
-                  element={<SearchResultComponent />}
-                />
-                <Route
-                  path="/"
-                  element={
-                    <>
-                      <NavHomeComponent />
-                      <SectionComponent
-                        section={"Rock Classics"}
-                        propId={"rockSection"}
-                        artistFetch={"queen"}
-                      />
-                      <SectionComponent
-                        section={"Pop Culture"}
-                        propId={"popSection"}
-                        artistFetch={"katyperry"}
-                      />
-                      <SectionComponent
-                        section={"#HipHop"}
-                        propId={"hipHopSection"}
-                        artistFetch={"eminem"}
-                      />
-                    </>
-                  }
-                />
-              </Routes>
-            </Col>
-          </Row>
-        </Container>
+          <Col xs={12} md={9} className="offset-md-3 mainPage">
+            <Routes>
+              <Route
+                path="/search/:artist"
+                element={<SearchResultComponent />}
+              />
+              <Route
+                path="/"
+                element={
+                  <>
+                    <NavHomeComponent />
+                    <SectionComponent
+                      section={"Rock Classics"}
+                      propId={"rockSection"}
+                      artistFetch={"queen"}
+                    />
+                    <SectionComponent
+                      section={"Pop Culture"}
+                      propId={"popSection"}
+                      artistFetch={"katyperry"}
+                    />
+                    <SectionComponent
+                      section={"#HipHop"}
+                      propId={"hipHopSection"}
+                      artistFetch={"eminem"}
+                    />
+                  </>
+                }
+              />
+            </Routes>
+          </Col>
+        </Row>
+      </Container>
 
-        {/* player */}
-        <PlayerComponent />
-      </BrowserRouter>
-    </>
+      {/* player */}
+      <PlayerComponent />
+    </BrowserRouter>
   );
 }
 

@@ -1,11 +1,12 @@
 export const GET_SONG_HOME_PAGE = "GET_SONG_HOME_PAGE";
 export const GET_SONG_SEARCH = "GET_SONG_SEARCH";
 
-export const getSongAction = (artistName) => {
+export const getSongAction = (artista) => {
   return (dispatch, getState) => {
+    console.log('qua l artista invece eee', artista)
     fetch(
       "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-        artistName,
+        artista,
       {
         method: "GET",
         headers: {
@@ -22,16 +23,17 @@ export const getSongAction = (artistName) => {
           throw new Error("Errore nel recupero libri");
         }
       })
-      .then((objFetch) => {
+      .then((canzoni) => {
         console.log(
           "GETSTATE, SECONDO PARAMETRO DELLA FUNZIONE ASINCRONA",
           getState()
         );
-        console.log('oh james, eu quero uma salada de fruata', objFetch.data)
-        const dataSelected = objFetch
+       
+        // const dataSelected = objFetch
+        // console.log('dati fetch', canzoni.data)
         dispatch({
           type: GET_SONG_HOME_PAGE,
-          payload: objFetch.data,
+          payload: canzoni.data,
         });
       })
       .catch((error) => {

@@ -5,22 +5,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSongAction } from "../redux/actions";
 
 const SectionComponent = (props) => {
-  const [musicList, setMusicList] = useState([]);
-  const dispatch = useDispatch();
-  const artist = props.artistFetch;
-  useEffect(() => {
-    // handleSection(props.artistFetch);
-    
 
+  const [musicList, setMusicList] = useState([]);
+
+  const dispatch = useDispatch();
+
+  let songsHome = useSelector((state) => state.home.musicHome);
+  useEffect(() => {
+    const artist = props.artistFetch;
     dispatch(getSongAction(artist));
     console.log("use effect de la home");
-    // const songsHome = useSelector((state) => state.home.songHomepageReducer)
-  }, []);
-  const songsHome = useSelector((state) => state.home.musicHome);
-  console.log("olha que habilidade", songsHome);
-  const arrMap = songsHome.slice(0, 4)
-  console.log("no capicho", arrMap);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+  // let songsHome = useSelector((state) => state.home.musicHome);
+
+  let arrMap = songsHome.slice(0, 4)
+
+  console.log("array mappato", arrMap);
   return (
     <Row>
       {/* <div class="row"> */}
@@ -34,12 +36,7 @@ const SectionComponent = (props) => {
             className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
             id={props.propId}
           >
-            {/* <div
-              class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-              id="rockSection"
-            //   dove fare map
-            
-            ></div> */}
+
             {arrMap.map((songInfo, i) => {
               return (
                 <div
