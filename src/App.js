@@ -17,38 +17,38 @@ function App() {
         <Container fluid>
           <Row>
             <SideBarComponent />
-            <Routes>
-              <Col xs={12} md={9} className="offset-md-3 mainPage">
-                <Route path="/" element={<NavHomeComponent />}></Route>
 
+            <Col xs={12} md={9} className="offset-md-3 mainPage">
+              <Routes>
                 <Route
-                  path="/search:searchArtist.text"
+                  path="/search/:artist"
                   element={<SearchResultComponent />}
                 />
-
-                {/* 3 */}
-                <Route path="/" element={<SectionComponent
-                  section={"Rock Classics"}
-                  propId={"rockSection"}
-                  artistFetch={"queen"}
-                />}></Route>
-                
-
-                <Route path="/" element={<SectionComponent
-                  section={"Pop Culture"}
-                  propId={"popSection"}
-                  artistFetch={"katyperry"}
-                />}></Route>
-                
-
-                <Route path="/" element={ <SectionComponent
-                  section={"#HipHop"}
-                  propId={"hipHopSection"}
-                  artistFetch={"eminem"}
-                />}></Route>
-                
-              </Col>
-            </Routes>
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <NavHomeComponent />
+                      <SectionComponent
+                        section={"Rock Classics"}
+                        propId={"rockSection"}
+                        artistFetch={"queen"}
+                      />
+                      <SectionComponent
+                        section={"Pop Culture"}
+                        propId={"popSection"}
+                        artistFetch={"katyperry"}
+                      />
+                      <SectionComponent
+                        section={"#HipHop"}
+                        propId={"hipHopSection"}
+                        artistFetch={"eminem"}
+                      />
+                    </>
+                  }
+                />
+              </Routes>
+            </Col>
           </Row>
         </Container>
 

@@ -2,17 +2,20 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+
 const SearchResultComponent = (props) => {
   const [musicSearch, setMusicSearch] = useState([]);
-  const [artistParams, setArtistParams] = useState('');
+  const [artistParams, setArtistParams] = useState("");
+
   const params = useParams();
   console.log("PARAMS", params);
-//   const navigate = useNavigate();
-const searchArtistSongs = (e) => {
-    e.preventDefault();
+  //   const navigate = useNavigate();
+
+  const searchArtistSongs = (e) => {
+    // e.preventDefault();
 
     const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
-    const artist = params.searchArtist.text;
+    const artist = params.arist;
     const completeUrl = url + artist;
     fetch(completeUrl, {
       method: "GET",
@@ -31,7 +34,7 @@ const searchArtistSongs = (e) => {
         }
       })
       .then((objFetch) => {
-        setMusicSearch(objFetch);
+        setMusicSearch(objFetch.data);
         console.log("obj fetch", objFetch);
       })
       .catch((err) => {
@@ -40,14 +43,10 @@ const searchArtistSongs = (e) => {
       });
   };
   useEffect(() => {
-   
-    const artistFromSearch = params.searchArtist.text
-    setArtistParams(artistFromSearch)
-    console.log('parames dentro search component', artistFromSearch)
-    searchArtistSongs()
-    
-   
-  }, [])
+    searchArtistSongs();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log("parames dentro search component", params);
   return (
     <Row>
       {/* <div class="row"> */}

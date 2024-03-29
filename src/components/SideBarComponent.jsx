@@ -16,37 +16,7 @@ const SideBarComponent = () => {
   const [searchArtist, setSearchArtist] = useState(initialSearch);
   const [musicSearch, setMusicSearch] = useState([]);
 
-//   const searchArtistSongs = (e) => {
-//     e.preventDefault();
 
-//     const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
-//     const artist = searchArtist.text;
-//     const completeUrl = url + artist;
-//     fetch(completeUrl, {
-//       method: "GET",
-
-//       headers: {
-//         "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-//         "X-RapidAPI-Key": "9d408f0366mshab3b0fd8e5ecdf7p1b09f2jsne682a1797fa0",
-//       },
-//     })
-//       .then((res) => {
-//         console.log("RES", res);
-//         if (res.ok) {
-//           return res.json();
-//         } else {
-//           throw new Error("Errore nel salvataggio della prenotazione");
-//         }
-//       })
-//       .then((objFetch) => {
-//         setMusicSearch(objFetch);
-//         console.log("obj fetch", objFetch);
-//       })
-//       .catch((err) => {
-//         // finirete qui dentro se la Promise viene rifiutata!
-//         console.log("ERRORE!", err);
-//       });
-//   };
   return (
     <Col xs={2}>
       {/* <div class="col col-2"> */}
@@ -160,7 +130,7 @@ const SideBarComponent = () => {
                               ...searchArtist, // riportando qui dentro TUTTE le proprietà di reservation
                               text: e.target.value, // il carattere che ho appena scritto
                             });
-                            //   console.log('campo di testo', searchArtist)
+                              console.log('campo di testo', searchArtist.text)
                           }
                         }
                         value={searchArtist.text}
@@ -183,6 +153,7 @@ const SideBarComponent = () => {
                           variant="outline-secondary"
                           className="h-100"
                           type="submit"
+                          
                         >
                           GO
                         </Button>
